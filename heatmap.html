@@ -31,7 +31,7 @@ var linear = d3.scale.linear()
 var projection = d3.geo.mercator()
     .center([0, 12 ])
     .scale(150)
-    .rotate([-180,0]);
+    ;
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
