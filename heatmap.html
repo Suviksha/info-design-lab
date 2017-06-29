@@ -53,7 +53,7 @@ queue()
  function myChart (error, topology,d3Map) {
  if(error) throw error;
  var rateById = {};
- d3Map.forEach(function(d){ rateById[d.id]=+d["id"]} );
+ d3Map.forEach(function(d){ rateById[d.id]=+d["CPI2015"]} );
  
 
     g.selectAll("path")
