@@ -1,0 +1,168 @@
+,Country,id,CPI,Rank,CPI2015
+0,Afghanistan,4,11,166,11
+1,Albania,8,36,88,36
+2,Algeria,12,,88,36
+3,Angola,24,15,163,15
+4,Argentina,32,32,107,32
+5,Armenia,51,35,95,35
+6,Australia,36,79,13,79
+7,Austria,40,76,16,76
+8,Azerbaijan,31,29,119,29
+9,Bahrain,48,51,50,51
+10,Bangladesh,50,25,139,25
+11,Belarus,112,32,107,32
+12,Belgium,56,77,15,77
+13,Benin,204,37,83,37
+14,Bhutan,64,65,27,65
+15,Bolivia,68,34,99,34
+16,Bosnia and Herzegovina,70,38,76,38
+17,Botswana,72,63,28,63
+18,Brazil,76,38,76,38
+19,Bulgaria,100,41,69,41
+20,Burkina Faso,854,,76,38
+21,Burundi,108,21,150,21
+22,Cape Verde,132,55,40,55
+23,Cambodia,116,21,150,21
+24,Cameroon,120,27,130,27
+25,Canada,124,83,9,83
+26,Central African Republic,140,24,145,24
+27,Chad,148,22,147,22
+28,Chile,152,70,23,70
+29,China,156,37,83,37
+30,Colombia,170,37,83,37
+31,Comoros,174,26,136,26
+32,Congo Republic,178,23,146,23
+33,Democratic Republic of the Congo,180,22,147,22
+34,Costa Rica,188,55,40,55
+35,C𴥠dՉvoire,384,32,107,32
+36,Croatia,191,51,50,51
+37,Cuba,192,47,56,47
+38,Cyprus,196,61,32,61
+39,Czech Republic,203,56,37,56
+40,Denmark,304,91,1,91
+41,Djibouti,262,34,99,34
+42,Dominican Republic,214,33,103,33
+43,Ecuador,218,32,107,32
+44,Egypt,818,36,88,36
+45,El Salvador,222,39,72,39
+46,Eritrea,232,18,154,18
+47,Estonia,233,70,23,70
+48,Ethiopia,231,33,103,33
+49,Finland,246,90,2,90
+50,France,250,70,23,70
+51,Gabon,266,34,99,34
+52,Gambia,270,28,123,28
+53,Georgia,268,52,48,52
+54,Germany,276,81,10,81
+55,Ghana,288,47,56,47
+56,Greece,300,46,58,46
+57,Guatemala,320,28,123,28
+58,Guinea,324,25,139,25
+59,Guinea-Bissau,624,17,158,17
+60,Guyana,328,29,119,29
+61,Haiti,332,17,158,17
+62,Honduras,340,31,112,31
+63,Hong Kong,344,75,18,75
+64,Hungary,348,51,50,51
+65,Iceland,352,79,13,79
+66,India,356,38,76,38
+67,Indonesia,360,36,88,36
+68,Iran,364,27,130,27
+69,Iraq,368,16,161,16
+70,Ireland,372,75,18,75
+71,Israel,376,61,32,61
+72,Italy,380,44,61,44
+73,Jamaica,388,41,69,41
+74,Japan,392,75,18,75
+75,Jordan,400,53,45,53
+76,Kazakhstan,398,28,123,28
+77,Kenya,404,25,139,25
+78,Korea (North),408,8,167,8
+79,Korea (South),410,56,37,56
+80,Kuwait,414,49,55,49
+81,Kyrgyzstan,417,28,123,28
+82,Laos,418,25,139,25
+83,Latvia,428,55,40,55
+84,Lebanon,422,28,123,28
+85,Lesotho,426,44,61,44
+86,Liberia,430,37,83,37
+87,Libya,434,16,161,16
+88,Lithuania,440,61,32,61
+89,Luxembourg,442,81,10,81
+90,Macedonia,807,42,66,42
+91,Madagascar,450,28,123,28
+92,Malawi,454,31,112,31
+93,Malaysia,458,50,54,50
+94,Mali,466,35,95,35
+95,Malta,470,56,37,56
+96,Mauritania,478,31,112,31
+97,Mauritius,480,53,45,53
+98,Mexico,484,35,95,35
+99,Moldova,498,33,103,33
+100,Mongolia,496,39,72,39
+101,Montenegro,499,44,61,44
+102,Morocco,504,36,88,36
+103,Mozambique,508,31,112,31
+104,Myanmar,104,22,147,22
+105,Namibia,516,53,45,53
+106,Nepal,524,27,130,27
+107,Netherlands,528,87,5,87
+108,New Zealand,554,88,4,88
+109,Nicaragua,558,27,130,27
+110,Niger,562,34,99,34
+111,Nigeria,566,26,136,26
+112,Norway,578,87,5,87
+113,Oman,512,45,60,45
+114,Pakistan,586,30,117,30
+115,Panama,591,39,72,39
+116,Papua New Guinea,598,25,139,25
+117,Paraguay,600,27,130,27
+118,Peru,604,36,88,36
+119,Philippines,608,35,95,35
+120,Poland,616,62,30,62
+121,Portugal,620,63,28,63
+122,Qatar,634,71,22,71
+123,Romania,642,46,58,46
+124,Russian Federation,643,29,119,29
+125,Rwanda,646,54,44,54
+126,Sao Tome and Principe,678,42,66,42
+127,Saudi Arabia,682,52,48,52
+128,Senegal,686,44,61,44
+129,Serbia,688,40,71,40
+130,Seychelles,690,55,40,55
+131,Sierra Leone,694,29,119,29
+132,Singapore,702,85,8,85
+133,Slovakia,703,51,50,51
+134,Slovenia,705,60,35,60
+135,Somalia,706,8,167,8
+136,South Africa,710,44,61,44
+137,South Sudan,728,12,163,15
+138,Spain,724,58,36,58
+139,Sri Lanka,144,37,83,37
+140,Sudan,729,12,165,12
+141,Suriname,740,36,88,36
+142,Sweden,752,89,3,89
+143,Switzerland,756,86,7,86
+144,Syria,760,18,154,18
+145,Taiwan,158,62,30,62
+146,Tajikistan,762,26,136,26
+147,Tanzania,834,30,117,30
+148,Thailand,764,38,76,38
+149,Timor-Leste,626,28,123,28
+150,Togo,768,32,107,32
+151,Trinidad and Tobago,780,39,72,39
+152,Tunisia,788,38,76,38
+153,Turkey,792,42,66,42
+154,Turkmenistan,795,18,154,18
+155,Uganda,800,25,139,25
+156,Ukraine,804,27,130,27
+157,United Arab Emirates,784,70,23,70
+158,United Kingdom,826,81,10,81
+159,United States of America,840,76,16,76
+160,Uruguay,858,74,21,74
+161,Uzbekistan,860,19,153,19
+162,Venezuela,862,17,158,17
+163,Vietnam,704,31,112,31
+164,Yemen,887,18,154,18
+165,Zambia,894,38,76,38
+166,Zimbabwe,716,21,150,21
