@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+
+.axis line {
+  fill: none;
+  stroke: black;
+  stroke-width : 0.25px ;
+  stroke-opacity : 1
+  shape-rendering: crispEdges;
+}
+
+.point {
+  stroke: none;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 1%;
+}
+
+.d3-tip_1 {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip_1:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip_1.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 1%;
+}
+
+ .tick text{
+    font-size: 12px;
+}
+
+.tick line{
+    opacity: 0.2;
+}
+
+path {
+  stroke: black;
+  stroke-width: 0.25px;
+  fill: none;
+}
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 150px;                  
+  height: 25px;                 
+  padding: 2px;             
+  font-size: 14px;     
+  background: #FFFFFF;
+  border: 1px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}    
+
+
+</style>
+<div id="body1"></div>
+<div id="body2"></div>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3-path.v1.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="d3CheckBox.js"></script>
+<script src="http://d3js.org/topojson.v0.min.js"></script>
+<script src="//d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.8.0/d3-legend.min.js"></script>
+
+<script>
+
+var margin = {top: 20, right: 10, bottom: 30, left: 40},
+    width = 1260 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .domain([0,90000]).nice()
+    .range([0,width]);
+
+var y = d3.scale.linear()
+    .domain([0,20]).nice()
+    .range([height, 0]);
+	
+var z = d3.scale.category20();
+
+var svg = d3.select("#body1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+var tip_1= d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .style("fill",function(d,i){return z(i)})
+  .html(function(d) {
+    return  "<strong>Country:</strong><span style ='color:red'>"+d.Country+"</span>"+"</br>"+"<strong>Per Capita GNI</strong><span style ='color:red'>"+d.GNI+"</span>"+
+	"</br>"+"<strong>Cash-GDP ratio:</strong><span style ='color:blue'>"+d.Cash+"</span>"});
+	
+var tip_2=d3.tip()
+    .attr('class','d3-tip_1')
+	.offset([-10,0])
+	.style("fill",function(d,i){return z(i)})
+	.html(function(d){
+	   return  "<strong>Country:</strong><span style ='color:red'>"+d.Country+"</span>"+"</br>"+"<strong>Per Capita GNI</strong><span style ='color:red'>"+d.GNI+"</span>"+
+	          "</br>"+"<strong>CPI:</strong><span style ='color:green'>"+d.sca_cpi+"</span>"});
+
+
+	
+
+   
+svg.call(tip_1);
+svg.call(tip_2);
+
+
+	
+// Add the x-axis.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .text("Per Capita GNI")
+	  .call(d3.svg.axis().scale(x).orient("bottom").ticks(10).tickPadding(10))
+	  .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", -6)
+      .style("text-anchor", "end")
+	  .style("stroke","black")
+      .text("per capita GNI");
+
+  // Add the y-axis.
+  svg.append("g")
+      .attr("class", "y axis")
+	  .text("Cash","CPI")
+      .call(d3.svg.axis().scale(y).orient("left").ticks(11).tickPadding(10))
+	  .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+	  .style("stroke","black")
+      .text("sca_cpi  /   cash")
+	  ;
+	  
+//upload csv.
+d3.csv("Country_currency_to_gdp_ratio.csv", function( data) {        // a function that takes 2 argument 'error' and 'data'.
+  data.forEach(function(d){
+  d.GNI=+d["GNI"];
+  d.Cash= +d["Cash"];
+  d.sca_cpi= +d["sca_cpi"];
+  d.Country= d["Country"];
+  
+var m=((+d["Cash"])-(+d["sca_cpi"]))*0.01;
+console.log(m);
+  
+//Add the points.
+svg.selectAll("points")
+   .data(data).enter()
+   .append("circle")
+   .attr("class","cash")
+   .attr("id","bluedot")
+   .attr("cx",function(d){return x(+d["GNI"])})
+   .attr("cy",function(d){return y(+d["Cash"])})
+   .attr("r",4.5)
+   .style("fill","blue")
+   .style("opacity",0.05869);
+   
+   
+//Add the lines.
+svg.selectAll("lines")
+   .data(data).enter()
+   .append("line")
+   .attr("class","line")
+   .attr("id","line")
+   .attr("x1",function(d){return x(+d["GNI"])})
+   .attr("y1",function(d){return y(+d["Cash"])})
+   .attr("x2",function(d){return x(+d["GNI"])})
+   .attr("y2",function(d){return y(+d["sca_cpi"])})
+   .style("fill","#gray")
+   .style("stroke","gray")
+   .style("opacity",0.03);												 
+
+			 
+
+  
+ //Add the points.
+svg.selectAll("points_1")
+   .data(data).enter()
+   .append("circle")
+   .attr("class","cashh")
+   .attr("id","bluedott")
+   .attr("cx",function(d){return x(+d["GNI"])})
+   .attr("cy",function(d){return y(+d["Cash"])})
+   .attr("r",4.5)
+   .style("fill","blue")
+   .style("opacity",0.0001)
+   .on('mouseover',tip_1.show)
+   .on('mouseout',tip_1.hide);
+   
+   
+   
+svg.selectAll("points_2")
+   .data(data).enter()
+   .append("circle")
+   .attr("class","cpi")
+   .attr("id","greendot")
+   .attr("cx",function(d){return x(+d["GNI"])})
+   .attr("cy",function(d){return y(+d["sca_cpi"])})
+   .attr("r",4.5)
+   .style("fill","green")
+   .style("opacity",0.01)
+   .on('mouseover',tip_2.show)
+   .on('mouseout',tip_2.hide);
+
+   
+   
+ //Add the text.  
+svg.selectAll(".text")
+   .data(data).enter()
+   .append("text")
+   .attr("class","text")
+   .attr("id","text")
+   .attr("x",function(d){return x(+d["GNI"])+10;})
+   .attr("y",function(d){return y(+d["Cash"])+10;})
+   .style("font_family","sans-serif")
+   .style("font-size","11px")
+   .text(function(d){return d["Country"]}) 
+  
+                        //console.log(d);
+						
+//Add title
+var text_2=svg.append("text")
+              .attr("class","text_2")
+			  .attr("id","text_2")
+              .attr("x",960)
+              .attr("y",40)
+              .style("font-size","16px")
+              .text("Cash");
+					
+   
+});});	
+   
+  function type(d) {
+  d.Country=d["Country"];
+  d.GNI=+d["GNI"];
+  d.Cash=+d["Cash"];
+  d.sca_cpi=+d["sca_cpi"];
+  return d;
+}
+<!--Code for D3 heatMap-->
+ 
+
+
+var color = d3.scale.threshold()
+    .domain([10,20,30,40,50,60,70,80,100])
+	.range(["#00441b","#006d2c","#238b45","#41ab5d","#74c476","#a1d99b","#c7e9c0","#e5f5e0","#f7fcf5"]);
+	
+var color_new = d3.scale.threshold()
+    .domain([2,4,6,8,10,12,14,16,19])
+	.range(d3.schemeBlues[9]);
+	
+var x1 = d3.scale.linear()
+    .domain([1, 10])
+    .rangeRound([700,750]);
+console.log(x1.range()[1]);
+
+
+	
+var projection = d3.geo.mercator()
+    .center([10, 70])
+    .scale(150)
+    ;
+
+var svg1 = d3.select("#body2").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var path = d3.geo.path()
+    .projection(projection);
+	
+var div = d3.select("#body2").append("div")   
+  .attr("class", "tooltip")               
+  .style("opacity", 0);
+	
+var g1 = svg1.append("g")
+           .attr("transform", "translate(0,40)");
+
+
+	
+//Adding text above legend.
+g1.append("text")
+    .attr("class", "caption")
+    .attr("x", x1.range()[0])
+	.attr("y",-6)
+	.attr("fill", "black")
+    .attr("text-anchor", "start")
+    .text("CPI");
+	
+
+//Adding Axis.
+g1.call(d3.svg.axis()
+    .scale(x1)
+    .tickSize(13)
+    .tickFormat(function(x1, i) { return i ? x1 : x1 + " "; })
+    .tickValues(color.domain()))
+    .select(".domain")
+    .remove();
+	
+
+//Uploading csv.
+queue()
+    .defer(d3.json,"world_map.json")
+	.defer(d3.csv,"d3Mapnewtwo.csv")
+	.defer(d3.csv,"CashData.csv")
+	.await(myChart);
+	
+
+
+// load and display the World
+ function myChart (error, topology,d3Mapnewmap,CashData) {
+ if(error) throw error;
+ var rateById = {};
+ var nameById={};
+ var rateById_new = {};
+ var nameById_new ={};
+ d3Mapnewmap.forEach(function(d){ rateById[d.id]=+d["CPI2015"] ; nameById[d.id]=d["Country"] ; } );
+ CashData.forEach(function(d){ rateById_new[d.id]=+d["Cash"] ; } );
+
+    g1.selectAll("path")
+      .data(topojson.object(topology, topology.objects.countries)
+      .geometries)
+      .enter()
+      .append("path")
+	  .attr("class","map")
+	  .attr("id","map")
+      .attr("d", path)
+	  .style("fill",function(d){ return color(rateById[d.id]) ; })
+	  .on("mouseover", function(d) {
+        d3.select(this).transition().duration(300).style("opacity", 1.5);
+                    div.transition().duration(300)
+                       .style("opacity", 1);
+                    div.text(nameById[d.id] + " : " + " CPI "+" : "+ rateById[d.id])
+					   .style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY -30) + "px");
+                       
+  })
+      .on("mouseout", function() {
+        d3.select(this)
+          .transition().duration(300)
+          .style("opacity", 0.8);
+        div.transition().duration(300)
+           .style("opacity", 0);
+  });
+  
+//Add the legend.
+g1.selectAll("rect")
+  .data(color.range().map(function(d) {
+      d = color.invertExtent(d);
+      if (d[0] == null) d[0] = x1.domain()[0];
+      if (d[1] == null) d[1] = x1.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+  .attr("class","rect_new")
+  .attr("id","rect_new")
+  .attr("height", 8)
+  .attr("x", function(d) { return x1(d[0]); })
+  .attr("width", function(d) { return x1(d[1]) - x1(d[0]); })
+  .attr("fill", function(d) { return color(d[0]); });
+	  
+//Add the button_1.
+svg.append("rect")
+   .attr('class','rect')
+   .attr("id","rect")
+   .attr("x",940)
+   .attr("y",25)
+   .attr("width",15)
+   .attr("height",15)
+   .style("fill","blue")
+   .style("stroke","black")
+   .style("stroke-width",3)
+   .style("opacity",0.9)
+   .on("click",function(){  var active_1=rect.active_1 ? false : true ,
+                            newColor_1= active_1 ? "green" : "blue" ;
+                            d3.selectAll(".rect").transition().duration(2000).delay(350).ease("linear").style("fill",newColor_1);
+							rect.active_1=active_1;
+                           
+                            var active=bluedot.active ? false : true,
+							newYaxis= active ? function(d){return y(+d["sca_cpi"])} : function(d){return y(+d["Cash"])}
+                            newColor= active ? "EC96A4" : "B3C100"	;
+							d3.selectAll(".cash")
+							   .transition()
+							   .duration(2000)
+							   .delay(350)
+							   .ease("linear")
+							   .attr("cy",newYaxis)
+							   .style("fill",newColor)
+							   ;
+   
+							bluedot.active=active;
+							var active_2=text.active_2 ? false : true ,
+							newYaxis_2 = active_2 ? function(d){return y(+d["sca_cpi"])} : function(d){return y(+d["Cash"])};
+							d3.selectAll(".text")
+							   .transition()
+							   .duration(2000)
+							   .delay(350)
+							   .ease("linear")
+							   .attr("y",newYaxis_2)
+							text.active_2=active_2;
+							var active_3 = text_2.active_3 ? false : true ,
+							newText =active_3 ? "CPI" : "Cash" ;
+							d3.selectAll(".text_2").transition().duration(2000).delay(350).ease("linear").text(newText)
+							text_2.active_3=active_3;
+							var active_4=bluedott.active_4 ? false : true ,
+							newOpac=active_4 ? 0.01: 0.001 ;
+							d3.selectAll(".cashh")
+							  .transition()
+							  .duration(2000)
+							  .delay(350)
+							  .ease("linear")
+							  .style("opacity",newOpac);
+							  
+							bluedott.active_4=active_4;
+							var active_5= bluedott.active_5 ? false : true ,
+							newOpacity = active_5 ? 0.0109 : 0.001;
+							d3.selectAll(".cash1").transition().duration(2000).delay(350).ease("linear").style("opacity",newOpacity);
+							bluedott.active_5 =active_5;
+							var active_6 = greendot.active_6 ? false : true,
+							newOpacyty=active_6 ? 0.01 : 0.0109 ; 
+							d3.selectAll(".cpi").transition().duration(2000).delay(350).ease("linear").style("opacity",newOpacyty);
+							newOpacyty.active_6 = active_6 ;
+							d3.selectAll(".cpi").on("mouseover",tip_2.show).on("mouseout",tip_2.hide);
+							var active_7=line.active_7 ? false : true ,
+							    newLcl = active_7 ? function(d){if (((+d["Cash"])-(+d["sca_cpi"]))<0) {return "#4CB5F5"} else if (((+d["Cash"])-(+d["sca_cpi"]))>0) {return "#B3C100" } }: "gray"
+								newOp=active_7 ? 0.09 : 0.03;
+							d3.selectAll(".line")
+							  .transition()
+							  .duration(2000)
+							  .delay(350)
+							  .ease("linear")
+							  .style("stroke",newLcl)
+                              .style("opacity",newOp)							  ;  
+                            line.active_7 = active_7 ;	
+                            var active_8 = map.active_8 ? false : true ,
+                            newData= active_8 ?  function(d){return color_new(rateById_new[d.id])} : function(d){return color(rateById[d.id]) }; 					
+					        d3.selectAll(".map").transition().duration(2000).ease("linear").style("fill",newData);
+					        map.active_8 = active_8 ;
+							
+							
+	  });
+ 
+
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ };  
+   
+   
+
+	
+</script>
+</body>
+</html>
