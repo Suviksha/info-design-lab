@@ -151,6 +151,7 @@ var body = d3.select("body")
 var form = body.append('form');
 
 form.append('input')
+	    .attr("class","radio1")
     .attr('type', 'radio')
 	.attr('checked','checked')
     .attr('value', 'Or')
@@ -163,6 +164,7 @@ form.append('label')
     .html('Cash');
 
 form.append('input')
+	    .attr("class","radio2")
     .attr('type', 'radio')
     .attr('value', 'And')
 	.attr('name', 'toggle')
