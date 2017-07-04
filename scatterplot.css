@@ -83,3 +83,14 @@ form {
   
  
 }
+.radio1{
+	
+	color:#fc8d59;
+}
+.radio2{
+	color:#91cf60;
+}
+.line{
+	stroke:black;
+	stroke-width:1;
+}
