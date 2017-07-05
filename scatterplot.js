@@ -1,6 +1,6 @@
 function scatterplot(){
-	var margin = {top: 20, right: 10, bottom: 30, left: 40},
-    width = 1060 - margin.left - margin.right,
+	var margin = {top: 20, right: 30, bottom: 30, left: 40},
+    width = 1360 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 	
 	var x = d3.scale.linear()
