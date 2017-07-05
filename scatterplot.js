@@ -67,7 +67,7 @@ svg.call(tip_2);
       .style("text-anchor", "end")
 	  .style("opacity",1)
 	  .style("fill","black")
-      .text("per capita GNI");
+      .text("Per Capita GNI");
 
   // Add the y-axis.
   svg.append("g")
@@ -82,7 +82,7 @@ svg.call(tip_2);
       .attr("dy", ".50em")
       .style("text-anchor", "end")
 	  .style("fill","black")
-      .text("sca_cpi  /   cash")
+      .text("Cash  /   Corruption")
 	  ;
 
 //Add the line joining the points.	  
@@ -186,7 +186,9 @@ form.append('input')
     .attr('value', 'Or')
 	.attr('name', 'toggle')
 	.on('click', function () {
-		d3.selectAll(".cash").transition().duration(3000).delay(250).ease("linear").attr("cy",function(d){return y(d.Cash)});
+		d3.selectAll(".cash").transition().duration(2000).delay(250).ease("linear").attr("cy",function(d){return y(d.Cash)});
+	        d3.selectAll(".text").transition().duration(2000).delay(250).ease("linear").style("opacity",1);
+		d3.selectAll(".text1").transition().duration(2000).delay(250).ease("linear").style("opacity",0);
     });
 
 form.append('label')
@@ -198,7 +200,9 @@ form.append('input')
     .attr('value', 'And')
 	.attr('name', 'toggle')
 	.on('click', function () {
-        d3.selectAll(".cash").transition().duration(3000).delay(250).ease("linear").attr("cy",function(d){return y(d.sca_cpi)});
+        d3.selectAll(".cash").transition().duration(2000).delay(250).ease("linear").attr("cy",function(d){return y(d.sca_cpi)});
+	d3.selectAll(".text1").transition().duration(2000).delay(250).ease("linear").style("opacity",1);
+        d3.selectAll(".text").transition().duration(2000).delay(250).ease("linear").style("opacity",0);
     });
 
 form.append('label')
