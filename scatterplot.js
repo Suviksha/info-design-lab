@@ -143,6 +143,35 @@ svg.selectAll("points_1")
    .style("opacity",1)
    .on('mouseover',tip_2.show)
    .on('mouseout',tip_2.hide);
+	    
+ //Add the text for Cash.  
+svg.selectAll(".text")
+   .data(data).enter()
+   .append("text")
+   .attr("class","text")
+   .attr("id","text")
+   .attr("x",function(d){return x(+d["GNI"])+10;})
+   .attr("y",function(d){return y(+d["Cash"])+10;})
+   .style("font_family","sans-serif")
+   .style("font-size","8px")
+   .style("color","black")
+   .style("opacity",1)
+   .text(function(d){return d["id"]});
+   
+
+//Add the text for Corruption.  
+svg.selectAll(".text1")
+   .data(data).enter()
+   .append("text")
+   .attr("class","text1")
+   .attr("id","text1")
+   .attr("x",function(d){return x(+d["GNI"])+10;})
+   .attr("y",function(d){return y(+d["sca_cpi"])+10;})
+   .style("font_family","sans-serif")
+   .style("font-size","8px")
+   .style("color","black")
+   .style("opacity",0)
+   .text(function(d){return d["id"]});
    
 
    
