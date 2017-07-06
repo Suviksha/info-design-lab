@@ -204,7 +204,7 @@ form.append('input')
 		d3.selectAll(".cash").transition().duration(2000).delay(250).ease("linear").attr("cy",function(d){return y(d.Cash)});
 		d3.selectAll(".text").transition().duration(2000).delay(250).ease("linear").style("opacity",1);
 		d3.selectAll(".text1").transition().duration(2000).delay(250).ease("linear").style("opacity",0);
-		d3.selectAll(".label1").transition().duration(2000).delay(250).ease("linear").text("Cash");
+		d3.selectAll(".label1").transition().duration(3000).delay(250).ease("linear").text("Cash");
     });
 
 form.append('label')
@@ -219,7 +219,7 @@ form.append('input')
         d3.selectAll(".cash").transition().duration(2000).delay(250).ease("linear").attr("cy",function(d){return y(d.cpi)});
 		d3.selectAll(".text1").transition().duration(2000).delay(250).ease("linear").style("opacity",1);
 		d3.selectAll(".text").transition().duration(2000).delay(250).ease("linear").style("opacity",0);
-		d3.selectAll(".label1").transition().duration(2000).delay(250).ease("linear").text("Corruption");
+		d3.selectAll(".label1").transition().duration(3000).delay(250).ease("linear").text("Corruption");
 		
     });
 
