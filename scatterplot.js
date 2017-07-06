@@ -33,7 +33,7 @@ function scatterplot(){
 	            .style("fill",function(d,i){return z(i)})
 	            .html(function(d){
 	   return  "  <span style ='color:#ffeda0'>"+d.Country+"</span>"+"</br>"+"Per Capita GNI:    <span style ='color:#ff7f7f'>"+d.GNI+"  </span> USD "+ 
-	          "</br>"+"Corruption Index:   <span style ='color:#91cf60'>"+d.cpi+"</span> "});
+	          "</br>"+"Corruption Index:   <span style ='color:#91cf60'>"+d.cpi+"</span>"});
 
 
 	
