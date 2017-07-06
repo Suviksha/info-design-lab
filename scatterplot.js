@@ -78,7 +78,7 @@ svg.call(tip_2);
       .attr("class", "y axis")
 	  .text("Cash","CPI")
       .call(d3.svg.axis().scale(y).orient("left").tickPadding(10).innerTickSize(-width)
-    .outerTickSize(0))
+    .outerTickSize(0).style("fill","none").style("stroke","gray").style("stroke-width"))
 	  .append("text")
       .attr("class", "label1")
       .attr("transform", "rotate(-90)")
